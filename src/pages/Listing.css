@@ -1,21 +1,70 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap");
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  margin: 1%;
+}
+
+.topbar__col2 {
+  border: 1px solid #b3b3b3;
+  display: flex;
+  border-radius: 6px;
+}
+
+.topbar__col2 > div > img {
+  height: 35px;
+  padding: 8px;
+
+  cursor: pointer;
+}
+
+.topbar__col2 > div:nth-child(2) {
+  border-left: 1px solid #b3b3b3;
+  background-color: #f5f5f5;
+  border-radius: 0 6px 6px 0;
+}
+
+.topbar__col3 > img {
+  height: 35px;
+  padding: 8px;
+  border: 1px solid #b3b3b3;
+  margin-left: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.topbar__col3 > img:nth-child(2) {
+  height: 35px;
+  padding: 8px;
+  border: 1px solid #b3b3b3;
+  margin-left: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #f5f5f5;
+}
+
+.topbar__col1 > span {
+  color: #535353;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bolder;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
 
 .showfilter__main {
-  /* border: 1px solid black; */
   width: 50%;
   position: absolute;
   top: 35px;
   left: 20%;
-  /* right: 50%; */
-  background-color: white;
+  background-color: #ffffff;
   font-family: "Montserrat", sans-serif;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px #0000001f, 0 1px 2px #0000003d;
   border-radius: 10px;
-  /* padding: 0 2%; */
+
+
 }
 
 .filter__header {
-  /* border: 1px solid black; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -29,7 +78,6 @@
 }
 
 .filter__advance {
-  /* border: 1px solid black; */
   display: flex;
   align-items: center;
 }
@@ -48,14 +96,7 @@
 }
 
 .container__main {
-  /* border : 1px solid black; */
   padding: 3% 2%;
-}
-
-.condition__container {
-  display: flex;
-  align-items: center;
-  /* margin: 10px 0; */
 }
 
 .condition__container > div {
@@ -66,12 +107,11 @@
   color: #6d6d6d;
   margin-right: 10px;
 
-  /* border: 1px solid black; */
 }
 
 .condition__container > select {
   border: 1px solid #afafaf;
-  background-color: white;
+  background-color: #ffffff;
   font-weight: bolder;
   font-size: 14px;
   letter-spacing: 1px;
@@ -84,7 +124,7 @@
 
 .condition__container > input {
   border: 1px solid #afafaf;
-  background-color: white;
+  background-color: #ffffff;
   font-weight: bolder;
   font-size: 14px;
   letter-spacing: 1px;
@@ -95,14 +135,13 @@
 }
 
 .dynamic__input {
-  /* border: 1px solid black; */
   margin: 10px 0;
 }
 
-.dynamic__input>img{
-    height: 20px;
-    margin: 0 10px;
-    cursor: pointer;
+.dynamic__input > img {
+  height: 20px;
+  margin: 0 10px;
+  cursor: pointer;
 }
 
 .dynamic__input > select:nth-child(1) {
@@ -111,8 +150,7 @@
 }
 .dynamic__input > select {
   border: 1px solid #afafaf;
-  /* border-radius: 5px; */
-  background-color: white;
+  background-color: #ffffff;
   font-weight: bolder;
   font-size: 14px;
   letter-spacing: 1px;
@@ -125,7 +163,7 @@
 
 .dynamic__input > input {
   border: 1px solid #afafaf;
-  background-color: white;
+  background-color: #ffffff;
   font-weight: bolder;
   font-size: 14px;
   letter-spacing: 1px;
@@ -133,4 +171,56 @@
   padding: 4px 30px 4px 5px;
   outline: none;
   width: 180px;
+}
+
+.listing__button {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.listing__button > button:nth-child(1) {
+  border: none;
+  background-color: #ffffff;
+  cursor: pointer;
+  color: #0000ff;
+  font-weight: bolder;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.listing__button > button:nth-child(1):hover {
+  color: #8a8aca;
+  transition: 0.3s all;
+}
+
+.listing__button > button:nth-child(2) {
+  border: none;
+  border: 1px solid #0000ff;
+  padding: 5px 16px;
+  color: #0000ff;
+
+  border-radius: 12px;
+  background-color: #ffffff;
+  cursor: pointer;
+  font-weight: bolder;
+  font-size: 16px;
+  letter-spacing: 1px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.listing__button > button:nth-child(2):hover {
+  color: #8a8aca;
+  border: 1px solid #8a8aca;
+  transition: 0.3s all;
+}
+
+/*  */
+
+.listing__row2 {
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bolder;
+  letter-spacing: 1.3px;
 }
