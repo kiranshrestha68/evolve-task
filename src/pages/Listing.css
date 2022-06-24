@@ -60,8 +60,6 @@
   font-family: "Montserrat", sans-serif;
   box-shadow: 0 1px 3px #0000001f, 0 1px 2px #0000003d;
   border-radius: 10px;
-
-
 }
 
 .filter__header {
@@ -99,6 +97,11 @@
   padding: 3% 2%;
 }
 
+.condition__container{
+  display: flex;
+  align-items: center;
+}
+
 .condition__container > div {
   font-weight: bolder;
   font-size: 14px;
@@ -106,7 +109,6 @@
   width: 100px;
   color: #6d6d6d;
   margin-right: 10px;
-
 }
 
 .condition__container > select {
@@ -216,11 +218,21 @@
   transition: 0.3s all;
 }
 
-/*  */
-
 .listing__row2 {
   font-size: 15px;
   font-family: "Montserrat", sans-serif;
   font-weight: bolder;
   letter-spacing: 1.3px;
+}
+
+.noData{
+  /* border: 1px solid black; */
+  width: 100%;
+  text-align: center;
+  color: #757575;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+
+
+
 }

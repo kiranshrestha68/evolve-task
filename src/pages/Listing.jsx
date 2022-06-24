@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Listing.css";
 import back from "../assets/back.png";
 import icon from "../assets/icon.svg";
@@ -12,98 +12,142 @@ import bin from "../assets/bin.png";
 
 import data from "./data";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Listing = () => {
   const [showfilter, setShowfilter] = useState(false);
   const [selectHeader, setSelectHeader] = useState("");
   const [_input, setInput] = useState("");
   const [_condition2, setCondition2] = useState();
+  const [datas, setData] = useState([]);
 
-  // console.log(selectHeader, "hello input track");
-  // console.log(selectHeader, "selectheader from dstate");
+  useEffect(() => {
+    setData(data);
+  }, []);
 
-  //   const [val, setVal] = useState([]);
   const [inputList, setinputList] = useState([
     { condition1: "", select_header: "", condition2: "", input: "" },
   ]);
 
-  //   console.log(inputList, "hello")
-  // console.log({ filteredData });
+  const clearField = () => {
+    setSelectHeader("");
+    setInput("");
+  };
+
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...inputList];
     list[index][name] = value;
-    // console.log(list, "list ");
     setinputList(list);
-
-    let select_header = JSON.stringify(inputList.map((l) => l.select_header));
-
-    let conditon1 = JSON.stringify(inputList.map((l) => l.condition1));
-    let condition2 = JSON.stringify(inputList.map((l) => l.condition2));
   };
-
-  // const selectHeaderr = () => {
-  //   setSelectHeader(select_header);
-  // }
 
   const handleSubmit = (e) => {
     console.log(inputList, "inputlist");
-    // // let kiran = inputList.find((l) => l.select_header == 'salary').select_header;
-    // // let input = JSON.stringify( inputList.map((i) => i.input));
-    // // console.log((JSON.stringify(input), "Input")
-    // // console.log(salary, 'salary')
-    // // console.log(test, "test")
-    // let select_header = JSON.stringify(inputList.map((l) => l.select_header));
 
-    // if (select_header === "salary") {
-    //   const filteredData = data.filter(
-    //     (d) => d.salary == inputList.map((i) => i.input)
-    //   );
-    //   console.log(filteredData, "filterdata")
-    // }
+    if (selectHeader === "salary" && _condition2 === ">=") {
+      const filterdata = data.filter((d) => d.salary >= _input);
+      // console.log(filterdata, "data fileter");
+
+      setData(filterdata);
+      setShowfilter(false);
+    } else if (selectHeader === "salary" && _condition2 === "==") {
+      const filterdata = data.filter((d) => d.salary == _input);
+      // console.log(filterdata, "data fileter");
+      setData(filterdata);
+      setShowfilter(false);
+    } else if (selectHeader === "salary" && _condition2 === "<=") {
+      const filterdata = data.filter((d) => d.salary <= _input);
+      // console.log(filterdata, "data fileter");
+      setData(filterdata);
+      setShowfilter(false);
+    } else if (selectHeader === "phone" && _condition2 === "==") {
+      const filterdata = data.filter((d) => d.phone == _input);
+      setData(filterdata);
+      setShowfilter(false);
+    } else if (selectHeader === "phone" && _condition2 === ">=") {
+      toast("Not valid condition on phone", {
+        position: "top-right",
+        autoClose: 2000,
+        type: "error",
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else if (selectHeader === "phone" && _condition2 === "<=") {
+      toast("Not valid condition on phone", {
+        position: "top-right",
+        autoClose: 2000,
+        type: "error",
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else if (selectHeader === "position" && _condition2 === "==") {
+      const filterdata = data.filter((d) => d.position === _input);
+      setData(filterdata);
+      setShowfilter(false);
+    } else if (selectHeader === "position" && _condition2 === "<=") {
+      toast("Not valid condition on position", {
+        position: "top-right",
+        autoClose: 2000,
+        type: "error",
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else if (selectHeader === "position" && _condition2 === ">=") {
+      toast("Not valid condition on position", {
+        position: "top-right",
+        autoClose: 2000,
+        type: "error",
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else if (selectHeader === "full_name" && _condition2 === "==") {
+      const filterdata = data.filter((d) => d.full_name === _input);
+      setData(filterdata);
+      setShowfilter(false);
+    } else if (selectHeader === "full_name" && _condition2 === "<=") {
+      toast("Not valid condition on name", {
+        position: "top-right",
+        autoClose: 2000,
+        type: "error",
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else if (selectHeader === "full_name" && _condition2 === ">=") {
+      // alert("Not valid condition on name");
+      toast("Not valid condition on name", {
+        position: "top-center",
+        autoClose: 2000,
+        type: "error",
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   const handleClick = () => {
-    // const abc = [...inputList, []];
-    // setinputList(abc);
-
     setinputList([
       ...inputList,
       { condition1: "", select_header: "", condition2: "", input: "" },
     ]);
-    // const allFruits = Object.assign({}, ...fruits);
-    // const _inputList = Object.assign({}, ...inputList);
-    // console.log(_inputList.condition2, "change");
-
-    // let select_header = JSON.stringify(inputList.map((l) => l.select_header));
-    // let conditon1 = JSON.stringify(inputList.map((l) => l.condition1));
-    // let condition2 = JSON.stringify(inputList.map((l) => l.condition2));
-    // // console.log({condition2}  )
-
-    // if (_inputList.select_header == "salary") {
-    //   var a = data.filter((d) => d._inputList == inputList.map((i) => i.input));
-    //   console.log(a, "hllo a");
-    // } else {
-    //   return;
-    // }
-
-    // const filteredData = data.filter(
-    //   (d) => d._inputList == inputList.map((i) => i.input)
-    // );
-    // console.log(filteredData, "filterdata");
-
-    // if (selectHeader == "salary") {
-    //   const filterdata = data.filter((d) => d.salary == _input);
-    //   console.log(filterdata, "data fileter");
-    // } else if (selectHeader == "phone") {
-    //   const filterdata = data.filter((d) => d.phone == _input);
-    //   console.log(filterdata, "data fileter");
-    // } else if (selectHeader == "full_name") {
-    //   const filterdata = data.filter((d) => d.full_name == _input);
-    //   console.log(filterdata, "data fileter");
-    // } else if (selectHeader == "position") {
-    //   const filterdata = data.filter((d) => d.position == _input);
-    //   console.log(filterdata, "data fileter");
-    // }
   };
 
   const handleDelete = (index) => {
@@ -118,12 +162,13 @@ const Listing = () => {
 
   return (
     <>
+      <ToastContainer />
+
       <div className="topbar">
-        {/* <button onClick={() => setShowfilter(true)}> filter</button>
-         */}
         <div className="topbar__col1">
-          {" "}
-          <span> 1,520 out of 1,994 outlets</span>
+          <span>
+            {datas.length} out of {data.length} outlets
+          </span>
         </div>
 
         <div className="topbar__col2">
@@ -132,7 +177,7 @@ const Listing = () => {
               src={filter}
               alt="filter"
               onClick={() => setShowfilter(true)}
-            />{" "}
+            />
           </div>
 
           <div>
@@ -158,7 +203,7 @@ const Listing = () => {
                 />
                 <span> Advanced filter </span>
               </div>
-              <img src={refresh} alt="refresh" />
+              <img src={refresh} alt="refresh" onClick={() => clearField()} />
             </div>
 
             <div className="container__main">
@@ -189,11 +234,14 @@ const Listing = () => {
                         {i === 0 ? <div> where</div> : null}
                         <select
                           name="select_header"
+                          value={selectHeader}
                           onChange={(e) => {
                             handleInputChange(e, i);
                             setSelectHeader(e.target.value);
                           }}
                         >
+                          <option value=""> -choose-</option>
+
                           <option value="full_name"> Name</option>
                           <option value="salary"> Salary</option>
                           <option value="phone"> Phone</option>
@@ -201,17 +249,21 @@ const Listing = () => {
                         </select>
                         <select
                           name="condition2"
+                          value={_condition2}
                           onChange={(e) => {
                             handleInputChange(e, i);
                             setCondition2(e.target.value);
                           }}
                         >
-                          <option value="=="> equals</option>
-                          <option value=">="> greater </option>
-                          <option value="<="> less </option>
+                          <option value=""> -choose-</option>
+
+                          <option value="=="> =</option>
+                          <option value=">="> ≥ </option>
+                          <option value="<="> ≤ </option>
                         </select>
                         <input
                           name="input"
+                          value={_input}
                           onChange={(e) => {
                             handleInputChange(e, i);
                             setInput(e.target.value);
@@ -231,6 +283,8 @@ const Listing = () => {
                           name="select_header"
                           onChange={(e) => handleInputChange(e, i)}
                         >
+                          <option value=""> -choose-</option>
+
                           <option value="name"> Name</option>
                           <option value="salary"> Salary</option>
                           <option value="phone"> Phone</option>
@@ -241,9 +295,11 @@ const Listing = () => {
                           name="condition2"
                           onChange={(e) => handleInputChange(e, i)}
                         >
-                          <option value="="> equals</option>
-                          <option value=">="> greater </option>
-                          <option value="<="> less </option>
+                          <option value=""> -choose-</option>
+
+                          <option value="=="> =</option>
+                          <option value=">="> ≥ </option>
+                          <option value="<="> ≤ </option>
                         </select>
                         <input
                           name="input"
@@ -284,7 +340,7 @@ const Listing = () => {
             </tr>
           </thead>
           <tbody className="text-secondary fw-bold text-muted">
-            {data.map((d) => (
+            {datas.map((d) => (
               <tr key={d.id}>
                 <td>{d.id}.</td>
 
@@ -296,6 +352,7 @@ const Listing = () => {
             ))}
           </tbody>
         </table>
+        {datas.length === 0 && <div className="noData"> No Data Found</div>}
       </div>
     </>
   );
